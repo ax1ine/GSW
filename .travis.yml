@@ -1,0 +1,39 @@
+language: julia
+os:
+  - linux
+julia:
+  - 1.0
+notifications:
+  email: false
+git:
+  depth: 99999999
+cache:
+  timeout: 1000
+  directories:
+    - downloads
+env:
+  global:
+    - BINARYBUILDER_DOWNLOADS_CACHE=downloads
+    - BINARYBUILDER_AUTOMATIC_APPLE=false
+sudo: required
+
+# Before anything else, get the latest versions of things
+before_script:
+  - julia -e 'using Pkg; pkg"add BinaryProvider"; pkg"add BinaryBuilder#master"; Pkg.build()'
+
+script:
+  - julia build_tarballs.jl
+
+
+deploy:
+    provider: releases
+    api_key:
+        # Note; this api_key is only valid for ax1ine/GSW; you need
+        # to make your own: https://docs.travis-ci.com/user/deployment/releases/
+        secure: D6pPNqdbB2/SfN/1wn7fchD9IQLbW4eFBmWKRppnsAx2O2ULrlUA4872RAFSu5TF05VEDNlNZSSIn3LRv6vY45rvajSP+R7nA36InABUYHNDV2nzp4YCNgmTVJOPozkfjx5w8SiboRJZu6ohs00vd71se3kNeDMzYPw/FZtOxQ7KJaXkHAPpx/nOX+/CiIDdzd4/xNIVepw1jaMKDStYYFLbGzRxT5oJwyVXYyPjc3kZUK4nRf7FT+l94ttLUYpitfZP/Co1BUjmseqMfNu4rGBi28M4PP6SSOcuV0MdpyExKjBkm/ZMqZQSrnBndzhYWfX0yM/fWtqqsoBeT3J4o+m1/qZ94qFduUkwuw8OJWFH1ee7/2GJ3hSy5Gl9vbcidvgVMHVaXuUnBpopL86HCGQkmGgFhKOPG3X5qEjhunl5FVD5MLwJAar+yNaLNP2YmXQTOeYeMJyg4mIiAVjsJtNU3croJRY/onY6VYiITHKf8OmMoKiLtsr3Dmkz9fjgZyOl1KPtphv0QtKLz3vlUIE4nRUf4Gh5d0PJXzWfGlz4MI+84QHVdpaaH+XDss0w0qgVJ6e/1CjspBcKq8qEcWpNexr2amMBuzh7IhrfQDV3t3RP2YCRUcwf2wk6g84fBynAOBDuyxaB+puOPqVRvCErmQA9RC+tpuctywSDNKE=
+    file_glob: true
+    file: products/*
+    skip_cleanup: true
+    on:
+        repo: ax1ine/GSW
+        tags: true
