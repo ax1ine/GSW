@@ -2,7 +2,7 @@
 # `julia build_tarballs.jl --help` to see a usage message.
 using BinaryBuilder
 
-name = "GSW"
+name = "GSW-C"
 version = v"3.0.5"
 
 # Collection of sources required to build GSW_BinaryBuilder
