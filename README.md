@@ -1,4 +1,4 @@
-# GSW-C_Binaries
+# GSW-C-Binaries
 
 [![Build Status](https://travis-ci.org/ax1ine/GSW.svg?branch=master)](https://travis-ci.org/ax1ine/GSW)
 
