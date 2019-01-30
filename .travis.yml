@@ -35,5 +35,5 @@ deploy:
     file: products/*
     skip_cleanup: true
     on:
-        repo: ax1ine/GSW
+        repo: ax1ine/GSW-C-Binaries
         tags: true
