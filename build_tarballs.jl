@@ -2,12 +2,12 @@
 # `julia build_tarballs.jl --help` to see a usage message.
 using BinaryBuilder
 
-name = "GSW_BinaryBuilder"
-version = v"0.1.0"
+name = "GSW_C"
+version = v"3.0.5"
 
 # Collection of sources required to build GSW_BinaryBuilder
 sources = [
-    "https://github.com/ax1ine/GSW_BinaryBuilder.git" =>
+    "https://github.com/ax1ine/GSW_C.git" =>
     "07a2c32978fe20a3e8791038207d9a57b2c5d0ff",
 
 ]
@@ -15,7 +15,7 @@ sources = [
 # Bash recipe for building across all platforms
 script = raw"""
 cd $WORKSPACE/srcdir
-cd GSW_BinaryBuilder
+cd GSW_C
 make all
 make install
 exit
