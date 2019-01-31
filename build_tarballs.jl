@@ -8,7 +8,7 @@ version = v"3.0.5"
 # Collection of sources required to build GSW_BinaryBuilder
 sources = [
     "https://github.com/ax1ine/GSW-C.git" =>
-    "07a2c32978fe20a3e8791038207d9a57b2c5d0ff",
+    "d71503d9f4a627e33901bde4b8294561008df8fc",
 
 ]
 
@@ -33,6 +33,7 @@ platforms = [
     Linux(:x86_64, libc=:musl),
     Linux(:aarch64, libc=:musl),
     Linux(:armv7l, libc=:musl, call_abi=:eabihf),
+    MacOS(:x86_64),
     FreeBSD(:x86_64),
     Windows(:i686),
     Windows(:x86_64)
